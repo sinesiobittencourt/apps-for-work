@@ -8,7 +8,7 @@ sudo apt update && sudo apt install ansible unzip git -y
 ```
 Step 2 - Clone this repository
 ```bash
-git clone https://github.com/caiodelgadonew/tools.git
+git clone https://github.com/sinesiobittencourt/apps-for-work.git
 ```
 
 Step 3 - Apply the configuration
