@@ -1,6 +1,17 @@
-composer.phar
-/vendor/
+## Generated hosts
+hosts/production
 
-# Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
-# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
-# composer.lock
+### Ansible ###
+*.retry
+ansible/hosts/production
+
+# End of https://www.gitignore.io/api/ansible
+### Code ###
+# Visual Studio Code - https://code.visualstudio.com/
+.settings/
+.vscode/
+tsconfig.json
+jsconfig.json
+
+
+# End of https://www.gitignore.io/api/code

@@ -1,0 +1,27 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+ansible = "*"
+ansible-lint = "*"
+boto3 = "*"
+pexpect = "*"
+# docker-py = "*"
+awscli = "*"
+pip = "*"
+PyYAML = "*"
+ansible-vault = "*"
+yml = "*"
+# python-language-server = {extras = ["all"]}
+docker = "*"
+"psycopg2-binary" = "*"
+
+[dev-packages]
+molecule = "*"
+ipython = "*"
+ipdb = "*"
+
+[pipenv]
+allow_prereleases = false
