@@ -1,3 +1,4 @@
+---
 - name: Deploy ubuntu
   hosts: localhost
   gather_facts: False
