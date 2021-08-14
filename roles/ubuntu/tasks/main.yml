@@ -1,5 +1,5 @@
 ---
-- name: Preparing Workstation
+- name: apt Install Packages
   hosts: localhost
   connection: local
   tasks:
