@@ -1,0 +1,10 @@
+---
+- name: apt Install Packages
+  apt: 
+    name: ['wget']
+
+- name: terraform install
+  unarchive:
+    src: https://releases.hashicorp.com/terraform/1.0.4/terraform_1.0.4_linux_amd64.zip
+    dest: /usr/bin
+    remote_src: True
