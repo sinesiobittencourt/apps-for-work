@@ -3,5 +3,9 @@
   hosts: localhost
   gather_facts: False
   become: true
+  remote_user: root
+  #become_method: sudo
   roles:
     - { role: ubuntu }
+
+  
