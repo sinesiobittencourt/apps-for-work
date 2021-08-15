@@ -149,28 +149,29 @@
   become: true
   apt:
     name: google-cloud-sdk
-- name: Install Docker Key
-  become: true
-  apt_key:
-    url: "https://download.docker.com/linux/ubuntu/gpg"
-    state: present
-- name: Install Docker Repository
-  become: true
-  apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
-    state: present
-    filename: docker-ce
-- name: Install Docker
-  become: true
-  apt:
-    name: docker-ce
 
-- name: Adding existing user to group Docker
-  become: yes
-  user:
-    name: "{{ ansible_user_id }}"
-    group: name="docker" state=present
-    append: yes
+#- name: Install Docker Key
+#  become: true
+#  apt_key:
+#    url: "https://download.docker.com/linux/ubuntu/gpg"
+#    state: present
+#- name: Install Docker Repository
+#  become: true
+#  apt_repository:
+#    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+#    state: present
+#    filename: docker-ce
+#- name: Install Docker
+#  become: true
+#  apt:
+#    name: docker-ce
+#
+#- name: Adding existing user to group Docker
+#  become: yes
+#  user:
+#    name: "{{ ansible_user_id }}"
+#    group: name="docker" state=present
+#    append: yes
 
 - name: Installing Kubectl 1.22.0
   become: true
