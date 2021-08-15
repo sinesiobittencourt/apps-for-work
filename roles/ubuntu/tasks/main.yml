@@ -61,30 +61,28 @@
     #       line: "autoload -U compinit && compinit"
     #       state: present
 
-    - block:
-      - name: Install Google Key
-        become: true
-        apt_key:
-          url: "https://dl.google.com/linux/linux_signing_key.pub"
-          state: present
-    
-      - name: Install Google Repository
-        become: true
-        apt_repository:
-          repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
-          state: present
-          filename: google-chrome
-      - name: Install Google Chrome
-        become: true
-        apt:
-          name: google-chrome-stable
-          state: present
-      - name: Installing Vagrant 2.2.18
-        become: true
-        unarchive:
-          src: "https://releases.hashicorp.com/vagrant/2.2.18/vagrant_2.2.18_linux_amd64.zip"
-          dest: /usr/local/bin
-          remote_src: yes
+- name: Install Google Key
+  become: true
+  apt_key:
+    url: "https://dl.google.com/linux/linux_signing_key.pub"
+    state: present
+- name: Install Google Repository
+  become: true
+  apt_repository:
+    repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
+    state: present
+    filename: google-chrome
+- name: Install Google Chrome
+  become: true
+  apt:
+    name: google-chrome-stable
+    state: present
+- name: Installing Vagrant 2.2.18
+  become: true
+  unarchive:
+    src: "https://releases.hashicorp.com/vagrant/2.2.18/vagrant_2.2.18_linux_amd64.zip"
+    dest: /usr/local/bin
+    remote_src: yes
 
     #- block:
     #  - name: Install Docker-Compose
