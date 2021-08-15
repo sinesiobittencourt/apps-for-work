@@ -61,35 +61,59 @@
     #       line: "autoload -U compinit && compinit"
     #       state: present
 
+    - block:
+      - name: Install Google Key
+        become: true
+        apt_key:
+          url: "https://dl.google.com/linux/linux_signing_key.pub"
+          state: present
+    
+      - name: Install Google Repository
+        become: true
+        apt_repository:
+          repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
+          state: present
+          filename: google-chrome
+      - name: Install Google Chrome
+        become: true
+        apt:
+          name: google-chrome-stable
+          state: present
+      - name: Installing Vagrant 2.2.18
+        become: true
+        unarchive:
+          src: "https://releases.hashicorp.com/vagrant/2.2.18/vagrant_2.2.18_linux_amd64.zip"
+          dest: /usr/local/bin
+          remote_src: yes
+
+    #- block:
+    #  - name: Install Docker-Compose
+    #    become: true
+    #    get_url:
+    #      url: "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-Linux-x86_64"
+    #      dest: "/usr/local/bin/docker-compose"
+    #      mode: 755
+    #  - name: Install Docker Machine Bash Completion
+    #    become: true
+    #    get_url:
+    #      url: "https://raw.githubusercontent.com/docker/machine/v0.16.0/contrib/completion/bash/docker-machine.bash"
+    #      dest: "/etc/bash_completion.d/docker-machine"
+    #  - name: Install Docker-Compose Bash Completion
+    #    become: true
+    #    get_url:
+    #      url: "https://raw.githubusercontent.com/docker/compose/1.26.2/contrib/completion/bash/docker-compose"
+    #      dest: "/etc/bash_completion.d/docker-compose"
+    #  - name: Install Docker-Compose and Docker Machine Zsh Completion
+    #    lineinfile:
+    #      path: /home/{{ ansible_user_id }}/.zshrc
+    #      regexp: "^plugins="
+    #      line: "plugins=(git docker docker-compose)"
+
 - name: Installing AWS CLI via pip3
   become: true
   pip:
     name: awscli
     executable: pip3
-
-- name: Install Google Key
-  become: true
-  apt_key:
-    url: "https://dl.google.com/linux/linux_signing_key.pub"
-    state: present
-
-- name: Install Google Repository
-  become: true
-  apt_repository:
-    repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
-    state: present
-    filename: google-chrome
-- name: Install Google Chrome
-  become: true
-  apt:
-    name: google-chrome-stable
-    state: present
-- name: Installing Vagrant 2.2.18
-  become: true
-  unarchive:
-    src: "https://releases.hashicorp.com/vagrant/2.2.18/vagrant_2.2.18_linux_amd64.zip"
-    dest: /usr/local/bin
-    remote_src: yes
 
 - name: Installing Vault 1.8.1
   become: true
@@ -149,28 +173,6 @@
     name: "{{ ansible_user_id }}"
     group: name="docker" state=present
     append: yes
-
-- name: Install Docker-Compose
-  become: true
-  get_url:
-    url: "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-Linux-x86_64"
-    dest: "/usr/local/bin/docker-compose"
-    mode: 755
-- name: Install Docker Machine Bash Completion
-  become: true
-  get_url:
-    url: "https://raw.githubusercontent.com/docker/machine/v0.16.0/contrib/completion/bash/docker-machine.bash"
-    dest: "/etc/bash_completion.d/docker-machine"
-- name: Install Docker-Compose Bash Completion
-  become: true
-  get_url:
-    url: "https://raw.githubusercontent.com/docker/compose/1.26.2/contrib/completion/bash/docker-compose"
-    dest: "/etc/bash_completion.d/docker-compose"
-- name: Install Docker-Compose and Docker Machine Zsh Completion
-  lineinfile:
-    path: /home/{{ ansible_user_id }}/.zshrc
-    regexp: "^plugins="
-    line: "plugins=(git docker docker-compose)"
 
 - name: Installing Kubectl 1.22.0
   become: true
