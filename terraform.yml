@@ -3,5 +3,6 @@
   hosts: localhost
   gather_facts: True
   become: true
+  remote_user: root
   roles:
     - { role: terraform }
