@@ -29,6 +29,7 @@
     - krita
     - jq
     - mtr
+    - balenaEtcher
 
 #- block:
 #    - name: Verify if Oh-My-zsh is installed
