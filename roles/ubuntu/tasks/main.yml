@@ -151,6 +151,14 @@
   apt:
     name: google-cloud-sdk
 
+- name: Install Argo Rollouts
+  become: true
+  get_url:
+    url: "https://github.com/argoproj/argo-rollouts/releases/latest/download/kubectl-argo-rollouts-darwin-amd64"
+    dest: /usr/local/bin/kubectl-argo-rollouts
+    mode: 755
+
+
 #- name: Install Docker Key
 #  become: true
 #  apt_key:
