@@ -10,8 +10,11 @@ Step 2 - Clone this repository
 ```bash
 git clone https://github.com/sinesiobittencourt/apps-for-work.git
 ```
-
-Step 3 - Apply the configuration
+Step 3 - Enter the folder
+```bash
+cd apps-for-work
+```
+Step 4 - Apply the configuration
 ```bash
 ansible-playbook ubuntu.yml --ask-become-pass
 ```
